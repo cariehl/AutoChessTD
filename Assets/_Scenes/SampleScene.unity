@@ -223,6 +223,7 @@ GameObject:
   - component: {fileID: 427571018}
   - component: {fileID: 427571017}
   - component: {fileID: 427571016}
+  - component: {fileID: 427571020}
   m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
@@ -297,11 +298,23 @@ Transform:
   m_GameObject: {fileID: 427571015}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -1, z: 0}
-  m_LocalScale: {x: 16, y: 1, z: 16}
+  m_LocalScale: {x: 20, y: 1, z: 30}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &427571020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 427571015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07efb95c3cfe7bf4faf3a147295c531b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &566072645 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8492218073951529497, guid: a2c1f551fea2e89489fec74553d9b2bc,
