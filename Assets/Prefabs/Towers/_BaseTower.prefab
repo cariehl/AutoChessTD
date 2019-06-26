@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 4209877882014888943}
   - component: {fileID: 3595768597870632417}
   m_Layer: 0
-  m_Name: Tower
+  m_Name: _BaseTower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -165,10 +165,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 6579527587071591559}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94a2365d7ea8cbd4daaae9cf8d4a56ba, type: 3}
+  m_Script: {fileID: 11500000, guid: 79bf21fece487a048bf2d1cf2266c6bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  capital: {fileID: 5727723180444325876}
+  health: 20
+  damage: 5
+  rotationSpeed: 10
+  capital: {fileID: 8492218073951529497}
+  _target: {fileID: 0}
 --- !u!1 &6612336799592212362
 GameObject:
   m_ObjectHideFlags: 0
