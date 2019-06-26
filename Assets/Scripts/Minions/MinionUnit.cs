@@ -12,6 +12,7 @@ namespace AutoChessTD.Minions {
     /// </summary>
     public class MinionUnit : MonoBehaviour {
 
+        [Header("Stats")]
         [SerializeField] private float health = 10;
         [SerializeField] private float damage = 1;
     }

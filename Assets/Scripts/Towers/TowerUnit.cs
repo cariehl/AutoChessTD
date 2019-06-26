@@ -12,7 +12,7 @@ namespace AutoChessTD.Towers {
     /// </summary>
     public class TowerUnit : MonoBehaviour {
 
-        [Header("Unit")]
+        [Header("Stats")]
         [SerializeField] private float health = 20;
         [SerializeField] private float damage = 5;
 
