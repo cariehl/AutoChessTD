@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Forceling_WorldGrid
+  m_Name: WorldGrid
   m_Shader: {fileID: 4800000, guid: c994119df7d0e6a4aa5d39321a22bbf6, type: 3}
   m_ShaderKeywords: _USE100M_ON _USE10M_ON
   m_LightmapFlags: 4
