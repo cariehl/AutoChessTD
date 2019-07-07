@@ -12,6 +12,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GenericTower
       objectReference: {fileID: 0}
+    - target: {fileID: 3595768597870632417, guid: a2c1f551fea2e89489fec74553d9b2bc,
+        type: 3}
+      propertyPath: health
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 4209877882014888943, guid: a2c1f551fea2e89489fec74553d9b2bc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -66,11 +71,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3595768597870632417, guid: a2c1f551fea2e89489fec74553d9b2bc,
-        type: 3}
-      propertyPath: health
-      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2c1f551fea2e89489fec74553d9b2bc, type: 3}
