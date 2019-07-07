@@ -11,7 +11,7 @@ namespace AutoChessTD.Units.Towers {
     /// Specific towers implemented by creating a prefab variant
     /// with necessary capabilities/commands
     /// </summary>
-    public class TowerUnit : MonoBehaviour {
+    public class TowerUnit : Unit {
 
         [Header("Stats")]
         [SerializeField] private float health = 20;
@@ -28,6 +28,10 @@ namespace AutoChessTD.Units.Towers {
             private set {
                 _target = value;
             }
+        }
+
+        public override void Awake() {
+            base.Awake();
         }
 
         private void Update() {

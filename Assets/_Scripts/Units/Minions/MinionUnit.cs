@@ -12,10 +12,23 @@ namespace AutoChessTD.Units.Minions {
     /// Specific minions implemented by creating a prefab variant
     /// with necessary capabilities/commands
     /// </summary>
-    public class MinionUnit : MonoBehaviour, ITowerInteractable {
+    public class MinionUnit : Unit, ITowerInteractable {
 
         [Header("Stats")]
         [SerializeField] private float health = 10;
         [SerializeField] private float damage = 1;
+
+        public override void Awake() {
+            base.Awake();
+        }
+
+
+        private void OnCollisionEnter(Collision collision) {
+            // triggered for any child gameObject collisions
+        }
+
+        private void OnTriggerEnter(Collider other) {
+            // triggered for any child gameObject triggers
+        }
     }
 }
