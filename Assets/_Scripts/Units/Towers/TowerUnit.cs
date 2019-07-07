@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using AutoChessTD.Interfaces;
 
-namespace AutoChessTD.Towers {
+namespace AutoChessTD.Units.Towers {
     /// <summary>
     /// Generic component that all Towers with have
     /// Contains functionality that all mionions will have
@@ -19,7 +20,7 @@ namespace AutoChessTD.Towers {
         [Header("GameObject")]
         [SerializeField] private float rotationSpeed = 10f;
 
-        public Transform capital;
+        [SerializeField] private Transform capital;
 
         [SerializeField] private GameObject _target;
         public GameObject Target {
@@ -29,12 +30,16 @@ namespace AutoChessTD.Towers {
             }
         }
 
-        private void Start() {
-
-        }
-
         private void Update() {
             LookAtTarget();
+        }
+
+        private void OnCollisionEnter(Collision collision) {
+            // triggered for any child gameObject collisions
+        }
+
+        private void OnTriggerEnter(Collider other) {
+            // triggered for any child gameObject triggers
         }
 
         private void LookAtTarget() {
