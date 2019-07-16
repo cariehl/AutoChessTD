@@ -14,14 +14,9 @@ namespace AutoChessTD.Units.Minions {
     /// </summary>
     public class MinionUnit : Unit, ITowerInteractable {
 
-        [Header("Stats")]
-        [SerializeField] private float health = 10;
-        [SerializeField] private float damage = 1;
-
         public override void Awake() {
             base.Awake();
         }
-
 
         private void OnCollisionEnter(Collision collision) {
             // triggered for any child gameObject collisions

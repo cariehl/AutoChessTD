@@ -13,43 +13,32 @@ namespace AutoChessTD.Units.Towers {
     /// </summary>
     public class TowerUnit : Unit {
 
-        [Header("Stats")]
-        [SerializeField] private float health = 20;
-        [SerializeField] private float damage = 5;
-
         [Header("GameObject")]
-        [SerializeField] private float rotationSpeed = 10f;
+        [SerializeField] private float rotationSpeed = 20f;
 
         [SerializeField] private Transform capital;
-
-        [SerializeField] private GameObject _target;
-        public GameObject Target {
-            get { return _target; }
-            private set {
-                _target = value;
-            }
-        }
 
         public override void Awake() {
             base.Awake();
         }
 
-        private void Update() {
-            LookAtTarget();
-        }
-
+        // triggered for any child gameObject collisions
         private void OnCollisionEnter(Collision collision) {
-            // triggered for any child gameObject collisions
+            Debug.Log(collision.gameObject);
         }
 
-        private void OnTriggerEnter(Collider other) {
-            // triggered for any child gameObject triggers
-        }
+        public override void LookAtTarget(Unit target) {
+            Vector3 targetPosition;
 
-        private void LookAtTarget() {
-            if (Target == null) return;
+            if (target == null) {
+                if (capital.forward == transform.forward) return;
 
-            Vector3 diff = Target.transform.position - capital.position;
+                targetPosition = capital.position + transform.forward;
+            } else {
+                targetPosition = target.transform.position;
+            }
+
+            Vector3 diff = targetPosition - capital.position;
             capital.rotation = Quaternion.Slerp(capital.rotation, Quaternion.LookRotation(diff), rotationSpeed * Time.deltaTime);
         }
     } 
