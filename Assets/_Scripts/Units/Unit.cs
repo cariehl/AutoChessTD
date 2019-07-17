@@ -15,10 +15,21 @@ namespace AutoChessTD.Units {
 
         public event UnitDelegate OnUnitDetected;
         public event UnitDelegate OnUnitUndetected;
+        public event UnitDelegate OnKilled;
 
         [Header("Stats")]
-        [SerializeField] private float health = 20;
-        [SerializeField] private float damage = 5;
+        [SerializeField] private float _health = 20;
+        public float Health {
+            get { return _health; }
+            protected set { _health = value; }
+        }
+
+        [SerializeField] private float _damage = 5;
+        public float Damage {
+            get { return _damage; }
+            protected set { _damage = value; }
+        }
+
         [SerializeField] private int detectionRange = 0;
 
         [Space]
@@ -79,5 +90,14 @@ namespace AutoChessTD.Units {
         }
 
         public virtual void LookAtTarget(Unit target) { }
+
+        public virtual void TakeDamage(float incomingDamage) {
+            Health -= incomingDamage;
+
+            if (Health > 0) return;
+
+            OnKilled?.Invoke(this);
+            Destroy(gameObject);
+        }
     }
 }

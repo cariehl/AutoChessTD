@@ -5,18 +5,36 @@ using AutoChessTD.Interfaces;
 
 namespace AutoChessTD.Units.Towers.Capabilities {
 
+    [RequireComponent(typeof(LineRenderer))]
     public class AutoAttackCapability : Capability {
 
-        [SerializeField] private float AttackRange = 1f;
+        [Header("Stats")]
+        [SerializeField] private float attackRange = 1f;
+        [Tooltip("Number of attacks per second")]
+        [Range(0, 10)]
+        [SerializeField] private float attackSpeed = 1f;
+
+        [Space]
+        [SerializeField] private GameObject laser;
 
         [SerializeField] private Unit target;
 
         public List<Unit> knownUnits;
 
+        private float attackDownTime = 1f;
+
+        private LineRenderer lineRenderer;
+
+        private void OnValidate() {
+            attackDownTime = 1f / attackSpeed;
+        }
+
         public override void Awake() {
             base.Awake();
 
             SupportedCommands.Add(CommandType.AUTO_ATTACK);
+            lineRenderer = GetComponent<LineRenderer>();
+            lineRenderer.enabled = false;
         }
 
         private void OnEnable() {
@@ -37,7 +55,7 @@ namespace AutoChessTD.Units.Towers.Capabilities {
             knownUnits.Add(unit);
 
             if (target != null) return;
-            target = unit;
+            AssignTarget(unit);
         }
 
         private void OnUnitUndetected(Unit unit) {
@@ -50,14 +68,46 @@ namespace AutoChessTD.Units.Towers.Capabilities {
             FindTargetInRange();
         }
 
+        private void AssignTarget(Unit _target) {
+            target = _target;
+            target.OnKilled += OnTargetKilled;
+
+            StartCoroutine(AttackTarget());
+        }
+
         private void FindTargetInRange() {
             if (knownUnits.Count == 0) return;
 
-            target = knownUnits[0];
+            AssignTarget(knownUnits[0]);
         }
 
         private void LookAtTarget() {
             Owner.LookAtTarget(target);
+        }
+
+        private IEnumerator AttackTarget() {
+            StartCoroutine(ShowLaser());
+            target.TakeDamage(Owner.Damage);
+            yield return new WaitForSeconds(attackDownTime);
+
+            if (target != null)
+                StartCoroutine(AttackTarget());
+        }
+
+        private IEnumerator ShowLaser() {
+            lineRenderer.enabled = true;
+            lineRenderer.SetPosition(0, laser.transform.position);
+            lineRenderer.SetPosition(1, target.transform.position);
+            yield return new WaitForSeconds(0.1f);
+            lineRenderer.enabled = false;
+        }
+
+        private void OnTargetKilled(Unit unit) {
+            target.OnKilled -= OnTargetKilled;
+            knownUnits.Remove(unit);
+            target = null;
+
+            FindTargetInRange();
         }
     }
 }
