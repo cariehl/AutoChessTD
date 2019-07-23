@@ -8,8 +8,8 @@ namespace AutoChessTD {
         Renderer rend;
 
         private void Awake() {
-            rend = GetComponent<Renderer>();
-            rend.material.mainTextureScale = new Vector2(transform.localScale.x, transform.localScale.z);
+            //rend = GetComponent<Renderer>();
+            //rend.material.mainTextureScale = new Vector2(transform.localScale.x, transform.localScale.z);
         }
     }
 }

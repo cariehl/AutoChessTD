@@ -39,6 +39,10 @@ namespace AutoChessTD.Units {
 
         public BoxCollider rangeDetectionCollider;
 
+        private void OnValidate() {
+            InitRangeDetection();
+        }
+
         public virtual void Awake() {
             Capabilities = new List<ICapability>(GetComponents<Capability>());
             InitRangeDetection();
