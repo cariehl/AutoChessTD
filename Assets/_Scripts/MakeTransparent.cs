@@ -8,8 +8,10 @@ public class MakeTransparent : MonoBehaviour
     void Start() {
         var renderers = GetComponentsInChildren<Renderer>(true);
         foreach (var renderer in renderers) {
-            foreach (var material in renderer.materials) {
-                material.color = new Color(material.color.r, material.color.g, material.color.b, 0.5f);
+            for (int i = 0; i < renderer.materials.Length; ++i) {
+                var color = renderer.materials[i].GetColor("_BaseColor");
+                color.a = 0.5f;
+                renderer.materials[i].SetColor("_BaseColor", color);
             }
         }
     }

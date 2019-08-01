@@ -130,7 +130,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1951879126222676435}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -197,8 +197,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0270c894c2406934b9cb7a346fabb68b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
-  damage: 1
+  _health: 20
+  _damage: 5
   detectionRange: 0
   baseDetectionRangeModifier: 1
   rangeDetectionCollider: {fileID: 3531754918573678323}
