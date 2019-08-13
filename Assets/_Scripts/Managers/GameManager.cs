@@ -28,6 +28,7 @@ namespace AutoChessTD {
 
         // Managers
         public GameData GameData;
+        public ScenarioManager ScenarioManager;
 
         // Factories
         [HideInInspector]
@@ -46,11 +47,18 @@ namespace AutoChessTD {
                 if (MinionFactory == null) {
                     MinionFactory = Instantiate<MinionFactory>(minionFactoryPrefab);
                 }
+                if (ScenarioManager == null) {
+                    ScenarioManager = new ScenarioManager();
+                }
 
                 if (GameData == null) {
                     GameData = GameData.Instance;
                 }
             }
+        }
+
+        private void Start() {
+            ScenarioManager.StartScenario();
         }
     }
 }
