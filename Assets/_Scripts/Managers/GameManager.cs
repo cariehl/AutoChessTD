@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using AutoChessTD.Data;
+using AutoChessTD.Factories;
 
 namespace AutoChessTD {
     public class GameManager : MonoBehaviour {
@@ -22,8 +23,19 @@ namespace AutoChessTD {
             }
         }
 
+        [Header("Prefabs")]
+        public MinionFactory minionFactoryPrefab;
+
         // Managers
         public GameData GameData;
+
+        // Factories
+        [HideInInspector]
+        public MinionFactory MinionFactory;
+
+        [Space]
+        public GameObject Grid;
+
 
         private void Awake() {
             if (_instance != null && _instance != this) {
@@ -31,7 +43,13 @@ namespace AutoChessTD {
             } else {
                 DontDestroyOnLoad(this);
 
-                GameData = GameData.Instance;
+                if (MinionFactory == null) {
+                    MinionFactory = Instantiate<MinionFactory>(minionFactoryPrefab);
+                }
+
+                if (GameData == null) {
+                    GameData = GameData.Instance;
+                }
             }
         }
     }

@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using AutoChessTD.Data;
 using AutoChessTD.Interfaces.Interactables;
-using AutoChessTD.Interfaces;
 
 namespace AutoChessTD.Units.Minions {
     /// <summary>
@@ -14,6 +14,25 @@ namespace AutoChessTD.Units.Minions {
     /// </summary>
     public class MinionUnit : Unit, ITowerInteractable {
 
+        [SerializeField] private MinionType _type;
+
+        public MinionType Type {
+            get { return _type; }
+            private set {
+                _type = value;
+            }
+        }
+
+        [SerializeField] private MinionConfiguration _config;
+        
+        public MinionConfiguration Config {
+            get { return _config; }
+            private set {
+                _config = value;
+                Type = _config.Type;
+            }
+        }
+
         public override void Awake() {
             base.Awake();
         }
@@ -24,6 +43,10 @@ namespace AutoChessTD.Units.Minions {
 
         private void OnTriggerEnter(Collider other) {
             // triggered for any child gameObject triggers
+        }
+
+        public void Init(MinionConfiguration config) {
+            Config = config;
         }
     }
 }

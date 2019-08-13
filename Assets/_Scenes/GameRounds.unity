@@ -97,7 +97,7 @@ LightmapSettings:
     m_ShowResolutionOverlay: 1
     m_ExportTrainingData: 0
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -526,6 +526,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1818640946110815343, guid: 1e04d8c1431754a4390cfccdcc58060a,
+        type: 3}
+      propertyPath: minionFactoryPrefab
+      value: 
+      objectReference: {fileID: 3625297855228920375, guid: dc100ac642f8c5e4e983b68aeb0e7580,
+        type: 3}
+    - target: {fileID: 1818640946110815343, guid: 1e04d8c1431754a4390cfccdcc58060a,
+        type: 3}
+      propertyPath: Grid
+      value: 
+      objectReference: {fileID: 427571015}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e04d8c1431754a4390cfccdcc58060a, type: 3}
 --- !u!1 &1807114469

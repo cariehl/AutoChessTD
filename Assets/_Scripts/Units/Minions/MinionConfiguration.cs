@@ -7,5 +7,9 @@ namespace AutoChessTD.Units.Minions {
     public class MinionConfiguration {
 
         [SerializeField] public MinionType Type;
+
+        public MinionConfiguration() {
+            Type = MinionType.GENERIC;
+        }
     }
 }

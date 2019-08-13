@@ -1,6 +1,8 @@
-﻿using UnityEngine;
+using System.Linq;
+using UnityEngine;
+using AutoChessTD.Units.Minions;
 
-namespace AutoChessTD.Utility {
+namespace AutoChessTD {
 
     public static class Util {
 
@@ -47,6 +49,17 @@ namespace AutoChessTD.Utility {
         /// </summary>
         public static Vector3 Ceil(this Vector3 vec) {
             return new Vector3((int)(vec.x + 1), (int)(vec.y + 1), (int)(vec.z + 1));
+        }
+
+        /// <summary>
+        /// Get the first MinionUnit in the array with type or null if non found
+        /// </summary>
+        /// <param name="array"></param>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        public static MinionUnit GetByType(this MinionUnit[] array, MinionType type) {
+
+            return array.FirstOrDefault(m => m.Type == type);
         }
     }
 }

@@ -1,7 +1,7 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using AutoChessTD.Utility;
+using AutoChessTD.Factories;
 
 namespace AutoChessTD {
 
@@ -14,7 +14,8 @@ namespace AutoChessTD {
         void Update() {
             if (Input.GetKeyDown(spawnKey)) {
                 var gridPos = Camera.main.GetMouseTargetingPoint(grid.layer);
-                Instantiate(minionPrefab, gridPos.point, grid.transform.rotation);
+
+                GameManager.Instance.MinionFactory.SpawnMinion(gridPos.point);
             }
         }
     }
