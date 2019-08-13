@@ -1,10 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using AutoChessTD.Units;
-using AutoChessTD.Events;
+using AutoChessTD.Units.Commands;
 
-namespace AutoChessTD.Interfaces {
+namespace AutoChessTD.Units.Capabilities {
 
     public interface ICapability {
 

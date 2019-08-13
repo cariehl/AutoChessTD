@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
-namespace AutoChessTD.Interfaces {
+using AutoChessTD.Units.Capabilities;
+
+namespace AutoChessTD.Units.Commands {
 
     public sealed class CommandType {
         public readonly string Name;

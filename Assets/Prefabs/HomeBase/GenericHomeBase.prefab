@@ -39,7 +39,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 489821421857726128}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -147,7 +147,7 @@ GameObject:
   - component: {fileID: 3226785168116553849}
   - component: {fileID: 1093480821910137294}
   m_Layer: 0
-  m_Name: _BaseHome
+  m_Name: GenericHomeBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using AutoChessTD.Events;
-using AutoChessTD.Interfaces;
+using AutoChessTD.Units.Capabilities;
+using AutoChessTD.Units.Commands;
 
 namespace AutoChessTD.Units {
     
