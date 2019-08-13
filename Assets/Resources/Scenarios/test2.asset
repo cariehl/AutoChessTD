@@ -11,8 +11,11 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
   m_Name: test2
-  m_EditorClassIdentifier: Assembly-CSharp:AutoChessTD.Data:GameConfig
-  DisplayName: Test
+  m_EditorClassIdentifier: Assembly-CSharp:AutoChessTD.Data:ScenarioConfig
+  DisplayName: Test2
   Rounds:
-  - Name: Test Round
-    minions: []
+  - Name: Round 1
+    Minions:
+    - SpawnTime: 0
+      minionToSpawn:
+        Type: 0

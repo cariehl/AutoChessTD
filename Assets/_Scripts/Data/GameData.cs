@@ -19,27 +19,30 @@ namespace AutoChessTD.Data {
             }
         }
 
-        public List<GameConfig> availableGames;
+        public List<ScenarioConfig> availableScenarios;
 
         public GameData() {            
-            availableGames = new List<GameConfig>(Resources.LoadAll<GameConfig>("Games"));
+            availableScenarios = new List<ScenarioConfig>(Resources.LoadAll<ScenarioConfig>("Scenarios"));
         }
     }
 
     /// <summary>
     /// Represents a single instance of a game.  Contains specifc game configs and rounds
     /// </summary>
-    [CreateAssetMenu(fileName = "GameData", menuName = "AutoChessTD/New Game Config", order = 0)]
+    [CreateAssetMenu(fileName = "GameData", menuName = "AutoChessTD/New Scenario Config", order = 0)]
     [Serializable]
-    public class GameConfig : ScriptableObject {
+    public class ScenarioConfig : ScriptableObject {
 
-        public GameConfig () { }
+        public ScenarioConfig () { }
 
         /// <summary>
         /// Name of the Game
         /// </summary>
         public string DisplayName;
 
+        /// <summary>
+        /// Array of Round info. in a game
+        /// </summary>
         public RoundConfig[] Rounds;
     }
 
@@ -51,9 +54,13 @@ namespace AutoChessTD.Data {
 
         public RoundConfig() { }
 
+        /// <summary>
+        /// Name of the Round
+        /// </summary>
         public string Name;
 
-        public MinionSpawnConfig[] minions;
+        // Array of minions to spawn in the round
+        public MinionSpawnConfig[] Minions;
     }
 
 
