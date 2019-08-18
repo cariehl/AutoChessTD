@@ -9,28 +9,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: f753da248c676ef4c8117f5ad994cfd1, type: 3}
   m_Name: test1
   m_EditorClassIdentifier: Assembly-CSharp:AutoChessTD.Data:ScenarioConfig
-  DisplayName: Test1
+  DisplayName: Test 1
   Rounds:
   - Name: Round 1
     Minions:
     - SpawnTime: 0
       minionToSpawn:
         Type: 0
-    - SpawnTime: 1
-      minionToSpawn:
-        Type: 0
     - SpawnTime: 2
       minionToSpawn:
         Type: 0
-    - SpawnTime: 3
+    - SpawnTime: 4
+      minionToSpawn:
+        Type: 0
+    - SpawnTime: 6
       minionToSpawn:
         Type: 0
   - Name: Round 2
     Minions:
-    - SpawnTime: 0
+    - SpawnTime: 1
       minionToSpawn:
         Type: 0
     - SpawnTime: 2
