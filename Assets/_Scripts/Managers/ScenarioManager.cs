@@ -11,20 +11,19 @@ namespace AutoChessTD {
 
         public RoundRunner roundRunner;
 
+        public ScenarioConfig CurrentScenario { get; set; }
+
         public ScenarioManager() {
             GameData = GameData.Instance;
         }
 
-        public void StartScenario(int scenarioIndex = 0) {
-
-            if (scenarioIndex >= GameData.availableScenarios.Count) {
-                Debug.LogError("No Scenario found with index: " + scenarioIndex);
+        public void StartScenario() {
+            if (CurrentScenario == null) {
+                Debug.LogError("No Scenario Configuration found.");
                 return;
             }
 
-            var scenario = GameData.availableScenarios[scenarioIndex];
-
-            roundRunner = new RoundRunner(scenario);
+            roundRunner = new RoundRunner(CurrentScenario);
             roundRunner.StartRound();
         }
     }

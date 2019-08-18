@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using AutoChessTD.Data;
 using AutoChessTD.Factories;
 using AutoChessTD.UI;
 
 namespace AutoChessTD {
     public class GameManager : MonoBehaviour {
+        private static readonly string defaultGameScene = "DefaultScenario";
+
         private static GameManager _instance;
 
         public static GameManager Instance {
@@ -25,6 +28,8 @@ namespace AutoChessTD {
 
         [Header("Prefabs")]
         public MinionFactory minionFactoryPrefab;
+        public MainMenuManager mainMenuManagerPrefab;
+        public GameObject gridPrefab;
 
         // Managers
         public GameData GameData;
@@ -38,19 +43,15 @@ namespace AutoChessTD {
         [HideInInspector]
         public MainMenuManager MainMenuManager;
 
-        [Space]
-        public GameObject Grid;
-
+        [HideInInspector]
+        public GameObject Grid { get; set; }
 
         private void Awake() {
             if (_instance != null && _instance != this) {
                 Destroy(this);
             } else {
                 DontDestroyOnLoad(this);
-
-                if (MinionFactory == null) {
-                    MinionFactory = Instantiate<MinionFactory>(minionFactoryPrefab);
-                }
+                
                 if (ScenarioManager == null) {
                     ScenarioManager = new ScenarioManager();
                 }
@@ -60,21 +61,58 @@ namespace AutoChessTD {
             }
         }
 
-        private void Start() {
-            //ScenarioManager.StartScenario();
+        private void OnEnable() {
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
 
-        public void StartScenario(int index) {
+        private void OnDisable() {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+        }
+
+        public void StartScenario(ScenarioConfig scenario) {
             if (MainMenuManager != null) {
                 MainMenuManager.GoToPanel();
             }
 
-            ScenarioManager.StartScenario(index);
+            ScenarioManager.CurrentScenario = scenario;
+            SceneManager.LoadScene(defaultGameScene);
+        }
+
+        private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
+            InitializeScene(scene.name);
+        }
+
+        private void InitializeScene() {
+            InitializeScene(SceneManager.GetActiveScene().name);
+        }
+
+        private void InitializeScene(string sceneName) {
+            switch (sceneName) {
+                case "MainMenu":
+                    InitializeMainMenu();
+                    return;
+                default:    // Scenario Game Scene
+                    InitializeScenario();
+                    return;
+            }
+        }
+
+        private void InitializeMainMenu() {
+            MainMenuManager = Instantiate(mainMenuManagerPrefab);
+            MainMenuManager.GoToPanel();
+        }
+
+        private void InitializeScenario() {
+            Grid = Instantiate(gridPrefab);
+            MinionFactory = Instantiate<MinionFactory>(minionFactoryPrefab);
+
+            ScenarioManager.StartScenario();
+
         }
 
         // Called from UI (for testing)
         public void KillAll() {
-            Instance.ScenarioManager.roundRunner.KillAll();
+            Instance.ScenarioManager?.roundRunner.KillAll();
         }
     }
 }

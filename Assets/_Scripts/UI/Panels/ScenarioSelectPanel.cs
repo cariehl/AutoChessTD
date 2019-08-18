@@ -24,11 +24,11 @@ namespace AutoChessTD.UI.Panels {
         private void RefreshScenariosList() {
             ClearList();
 
-            for (int i = 0; i < GameData.Instance.availableScenarios.Count; ++i) {
+            foreach (var scenario in GameData.Instance.availableScenarios) {
                 var item = Instantiate<ScenarioListItem>(scenarioItemPrefab, scenarioList.transform);
-                item.Init(GameData.Instance.availableScenarios[i]);
+                item.Init(scenario);
 
-                AddLaunchBtnListener(item.launchButton, i);
+                AddLaunchBtnListener(item.launchButton, scenario);
 
                 scenarioUIItems.Add(item);
             }
@@ -42,9 +42,9 @@ namespace AutoChessTD.UI.Panels {
             scenarioUIItems.Clear();
         }
 
-        private void AddLaunchBtnListener(Button button, int index) {
+        private void AddLaunchBtnListener(Button button, ScenarioConfig scenario) {
             button.onClick.AddListener(() => {
-                GameManager.Instance.StartScenario(index);
+                GameManager.Instance.StartScenario(scenario);
             });
         }
     }
