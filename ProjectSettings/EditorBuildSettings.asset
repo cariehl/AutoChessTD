@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/_Scenes/MainMenu.unity
     guid: 138f6810deadc304191e7e6ac267946e
   - enabled: 1
-    path: Assets/_Scenes/GameRounds.unity
-    guid: bce6ab177434ef941809f91954f6fc83
+    path: Assets/_Scenes/DefaultScenario.unity
+    guid: 7195d71a9bf33e44cba1a6cbf7e780f9
   - enabled: 1
     path: Assets/_Scenes/SampleSceneLWRP.unity
     guid: d1c3109bdb54ad54c8a2b2838528e640

@@ -3,44 +3,71 @@ using System.Collections.Generic;
 using UnityEngine;
 using AutoChessTD.Data;
 using AutoChessTD.Units;
+using AutoChessTD.Events;
 using AutoChessTD.Units.Minions;
 
 namespace AutoChessTD {
 
     public class RoundRunner {
 
+        public delegate void BoolDelegate(bool success);
+        public event BoolDelegate OnRoundEnded;
+
         public ScenarioConfig currentScenario;
 
         private int roundIndex = -1;
         public RoundConfig CurrentRound {
             get {
-                if (roundIndex < 0 || roundIndex >= currentScenario.Rounds.Length)
-                    return null;
-
-                return currentScenario.Rounds[roundIndex];
+                return GetRound(roundIndex);
             }
         }
 
-        public List<MinionUnit> activeMinions = new List<MinionUnit>();       
+        public List<MinionUnit> activeMinions = new List<MinionUnit>();
+
+        public bool isPlaying;
+        public bool isScenarioActive;
 
 
         public RoundRunner(ScenarioConfig scenarioConfig) {
             currentScenario = scenarioConfig;
+            isScenarioActive = true;
+            isPlaying = false;
+
+            EventManager.OnScenarioEnded += OnScenarioEnded;
+            EventManager.OnRoundEnded += RoundEnded;
         }
 
-        // returns true if a round has been started false if there was no round to start
-        public bool StartRound() {
+        public void StartScenario() {
+            Debug.Log("Scenario Started");
+            isScenarioActive = true;
+            StartNextRound();
+        }
+
+        // Assumes that there is a next round to start
+        //   if the next round is null assume that scenario had no rounds to begin with
+        public void StartNextRound() {
+            Debug.Log("Round Started");
+            isPlaying = true;
             ++roundIndex;
 
-            var round = CurrentRound;
-            if (round == null) {
-                Debug.Log("Scenario Completed");
-                return false;
+            if (CurrentRound == null) {
+                CheckRoundCompleted();
+                return;
             }
-
             SpawnObjects();
+        }
 
-            return true;
+        public RoundConfig PeekNextRound() {
+            int nextIndex = roundIndex + 1;
+
+            return GetRound(nextIndex);
+        }
+
+        public RoundConfig GetRound(int index) {
+            if (index < 0 || index >= currentScenario.Rounds.Length)
+                return null;
+
+            return currentScenario.Rounds[index];
         }
 
         public void SpawnObjects() {
@@ -64,7 +91,32 @@ namespace AutoChessTD {
         public void CheckRoundCompleted() {
             if (activeMinions.Count > 0) return;
 
-            StartRound();
+            EventManager.RoundEnded();
+        }
+
+        public void RoundEnded(bool success) {
+            Debug.Log("Round Ended");
+            CleanUp();
+            isPlaying = false;
+            OnRoundEnded?.Invoke(success);
+        }
+
+        public void OnScenarioEnded(bool success) {
+            isScenarioActive = false;
+            EventManager.OnScenarioEnded -= OnScenarioEnded;
+            EventManager.OnRoundEnded -= RoundEnded;
+        }
+
+        public bool HasCompletedScenario() {
+            return !isPlaying && CurrentRound == GetRound(currentScenario.Rounds.Length - 1);
+        }
+
+        public void CleanUp() {
+            foreach (var minion in activeMinions) {
+                GameObject.Destroy(minion.gameObject);
+            }
+
+            activeMinions.Clear();
         }
 
         public void KillAll() {
