@@ -28,12 +28,19 @@ namespace AutoChessTD {
             currentScenario = scenarioConfig;
         }
 
-        public void StartRound() {
+        // returns true if a round has been started false if there was no round to start
+        public bool StartRound() {
             ++roundIndex;
 
             var round = CurrentRound;
+            if (round == null) {
+                Debug.Log("Scenario Completed");
+                return false;
+            }
 
             SpawnObjects();
+
+            return true;
         }
 
         public void SpawnObjects() {
@@ -41,6 +48,32 @@ namespace AutoChessTD {
                 var minion = GameManager.Instance.MinionFactory.SpawnMinion(minionSpawnConfig.minionToSpawn);
                 activeMinions.Add(minion);
             }
+        }
+
+        public void OnMinionDeath(Unit unit) {
+            unit.OnKilled -= OnMinionDeath;
+
+            var minion = unit as MinionUnit;
+            if (minion == null) return;
+
+            activeMinions.Remove(minion);
+
+            CheckRoundCompleted();
+        }
+
+        public void CheckRoundCompleted() {
+            if (activeMinions.Count > 0) return;
+
+            StartRound();
+        }
+
+        public void KillAll() {
+            foreach (var minion in activeMinions) {
+                minion.TakeDamage(minion.Health);
+            }
+
+            activeMinions.Clear();
+            CheckRoundCompleted();
         }
     }
 }

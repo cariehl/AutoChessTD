@@ -17,7 +17,10 @@ namespace AutoChessTD {
 
         public void StartScenario(int scenarioIndex = 0) {
 
-            if (scenarioIndex >= GameData.availableScenarios.Count) return;
+            if (scenarioIndex >= GameData.availableScenarios.Count) {
+                Debug.LogError("No Scenario found with index: " + scenarioIndex);
+                return;
+            }
 
             var scenario = GameData.availableScenarios[scenarioIndex];
 

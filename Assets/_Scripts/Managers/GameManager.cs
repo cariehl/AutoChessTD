@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using AutoChessTD.Data;
 using AutoChessTD.Factories;
+using AutoChessTD.UI;
 
 namespace AutoChessTD {
     public class GameManager : MonoBehaviour {
@@ -15,8 +16,7 @@ namespace AutoChessTD {
                 }
 
                 if (_instance == null) {
-                    var go = Instantiate(Resources.Load<GameObject>("GameManager"));
-                    _instance = go.GetComponent<GameManager>();
+                    Debug.LogError("GameManager must be added to scene.");
                 }
 
                 return _instance;
@@ -34,6 +34,10 @@ namespace AutoChessTD {
         [HideInInspector]
         public MinionFactory MinionFactory;
 
+        // UI Managers
+        [HideInInspector]
+        public MainMenuManager MainMenuManager;
+
         [Space]
         public GameObject Grid;
 
@@ -50,7 +54,6 @@ namespace AutoChessTD {
                 if (ScenarioManager == null) {
                     ScenarioManager = new ScenarioManager();
                 }
-
                 if (GameData == null) {
                     GameData = GameData.Instance;
                 }
@@ -58,7 +61,20 @@ namespace AutoChessTD {
         }
 
         private void Start() {
-            ScenarioManager.StartScenario();
+            //ScenarioManager.StartScenario();
+        }
+
+        public void StartScenario(int index) {
+            if (MainMenuManager != null) {
+                MainMenuManager.GoToPanel();
+            }
+
+            ScenarioManager.StartScenario(index);
+        }
+
+        // Called from UI (for testing)
+        public void KillAll() {
+            Instance.ScenarioManager.roundRunner.KillAll();
         }
     }
 }
