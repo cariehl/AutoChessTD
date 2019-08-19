@@ -5,21 +5,17 @@ using AutoChessTD.UI.Panels;
 
 namespace AutoChessTD.UI {
 
-    public class MainMenuManager : MonoBehaviour {
+    public class BaseUIManager : MonoBehaviour {
 
         [Header("Prefabs")]
-        [SerializeField] private GameObject _eventSystem;
         [SerializeField] private BasePanel[] panelPrefabs;
-        
+
         private List<BasePanel> panels = new List<BasePanel>();
 
 
-        private void Awake() {
-            Instantiate(_eventSystem);
+        protected virtual void Awake() {
             SpawnPanels();
             GoToPanel(PanelType.NONE);
-
-            GameManager.Instance.MainMenuManager = this;
         }
 
         private void Start() {
