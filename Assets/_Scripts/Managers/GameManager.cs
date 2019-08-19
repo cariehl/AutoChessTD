@@ -78,7 +78,7 @@ namespace AutoChessTD {
 
         public void StartScenario(ScenarioConfig scenario) {
             if (MainMenuUI != null) {
-                MainMenuUI.GoToPanel();
+                MainMenuUI.GoToScreen();
             }
 
             ScenarioManager.CurrentScenario = scenario;
@@ -112,7 +112,7 @@ namespace AutoChessTD {
 
         private void InitializeMainMenu() {
             MainMenuUI = Instantiate(mainMenuUIPrefab);
-            MainMenuUI.GoToPanel();
+            MainMenuUI.GoToScreen();
         }
 
         private void InitializeScenario() {

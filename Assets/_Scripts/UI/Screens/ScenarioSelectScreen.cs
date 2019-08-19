@@ -4,11 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using AutoChessTD.Data;
 
-namespace AutoChessTD.UI.Panels {
+namespace AutoChessTD.UI.Screens {
 
-    public class ScenarioSelectPanel : BasePanel {
+    public class ScenarioSelectScreen : BaseScreen {
 
-        public override PanelType PanelType { get => PanelType.ScenarioSelect; }
+        public override ScreenType ScreenType { get => ScreenType.ScenarioSelect; }
 
         [SerializeField] private GameObject scenarioList;
         [SerializeField] private ScenarioListItem scenarioItemPrefab;

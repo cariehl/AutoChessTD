@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using AutoChessTD.UI.Panels;
+using AutoChessTD.UI.Screens;
 
 namespace AutoChessTD.UI {
 

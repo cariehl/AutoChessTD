@@ -1,40 +1,40 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using AutoChessTD.UI.Panels;
+using AutoChessTD.UI.Screens;
 
 namespace AutoChessTD.UI {
 
     public class BaseUIManager : MonoBehaviour {
 
         [Header("Prefabs")]
-        [SerializeField] private BasePanel[] panelPrefabs;
+        [SerializeField] private BaseScreen[] screenPrefabs;
 
-        private List<BasePanel> panels = new List<BasePanel>();
+        private List<BaseScreen> screens = new List<BaseScreen>();
 
 
         protected virtual void Awake() {
-            SpawnPanels();
-            GoToPanel(PanelType.NONE);
+            SpawnScreens();
+            GoToScreen(ScreenType.NONE);
         }
 
         private void Start() {
-            GoToPanel(PanelType.ScenarioSelect);
+            GoToScreen(ScreenType.ScenarioSelect);
         }
 
-        private void SpawnPanels() {
-            foreach (var panelPrefab in panelPrefabs) {
-                var panel = Instantiate(panelPrefab, transform);
-                panels.Add(panel);
+        private void SpawnScreens() {
+            foreach (var screenPrefab in screenPrefabs) {
+                var screen = Instantiate(screenPrefab, transform);
+                screens.Add(screen);
             }
         }
 
-        public void GoToPanel(params PanelType[] types) {
-            foreach (var panel in panels) {
-                if (panel.PanelType.In(types))
-                    panel.Show();
+        public void GoToScreen(params ScreenType[] types) {
+            foreach (var screen in screens) {
+                if (screen.ScreenType.In(types))
+                    screen.Show();
                 else
-                    panel.Hide();
+                    screen.Hide();
             }
         }
     }

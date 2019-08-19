@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace AutoChessTD.UI.Panels {
+namespace AutoChessTD.UI.Screens {
 
-    public enum PanelType {
+    public enum ScreenType {
         ScenarioSelect, NONE
     }
 
     [RequireComponent(typeof(CanvasScaler), typeof(GraphicRaycaster))]
-    public class BasePanel : MonoBehaviour {
+    public class BaseScreen : MonoBehaviour {
 
         protected Canvas _canvas;
         private CanvasScaler _canvasScaler;
 
-        public virtual PanelType PanelType { get; } = PanelType.NONE;
+        public virtual ScreenType ScreenType { get; } = ScreenType.NONE;
 
         private void Awake() {
             _canvas = GetComponent<Canvas>();
