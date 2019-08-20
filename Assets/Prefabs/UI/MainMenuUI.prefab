@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8648033783725579698}
   - component: {fileID: 8648033783725579699}
   m_Layer: 0
-  m_Name: MainMennUI
+  m_Name: MainMenuUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,5 +43,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7338250d8f363564797a5f8107b78957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panelPrefabs:
+  screenPrefabs:
   - {fileID: 6071326930770443693, guid: 94ca36a32736bcc419a4ae066c10f812, type: 3}

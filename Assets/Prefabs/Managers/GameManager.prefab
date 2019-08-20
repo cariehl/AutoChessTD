@@ -45,11 +45,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minionFactoryPrefab: {fileID: 3625297855228920375, guid: dc100ac642f8c5e4e983b68aeb0e7580,
     type: 3}
-  mainMenuManagerPrefab: {fileID: 8648033783725579699, guid: e6a270307c8d3dd44b1490685b6ef8be,
+  mainMenuUIPrefab: {fileID: 8648033783725579699, guid: e6a270307c8d3dd44b1490685b6ef8be,
+    type: 3}
+  gamePlayUIPrefab: {fileID: 8993157482301949787, guid: caa9d876ede2e444689504e63d2c695a,
     type: 3}
   gridPrefab: {fileID: 8093196302183761698, guid: dfb15da2efa702e468d9120fae62e36e,
     type: 3}
   eventSystemPrefab: {fileID: 865151087541279568, guid: c422f9fa3c145f24b8b162bfe4b4dee2,
     type: 3}
   MinionFactory: {fileID: 0}
-  MainMenuManager: {fileID: 0}
+  MainMenuUI: {fileID: 0}
+  GamePlayUI: {fileID: 0}

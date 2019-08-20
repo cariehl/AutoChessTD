@@ -8,7 +8,7 @@ namespace AutoChessTD.UI.Screens {
 
     public class ScenarioSelectScreen : BaseScreen {
 
-        public override ScreenType ScreenType { get => ScreenType.ScenarioSelect; }
+        public override ScreenType ScreenType => ScreenType.ScenarioSelect;
 
         [SerializeField] private GameObject scenarioList;
         [SerializeField] private ScenarioListItem scenarioItemPrefab;

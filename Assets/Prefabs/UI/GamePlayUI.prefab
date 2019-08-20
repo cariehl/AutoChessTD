@@ -43,4 +43,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d12bfcb1d2957644fb091593106f54d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panelPrefabs: []
+  screenPrefabs:
+  - {fileID: 2473757501313396425, guid: 8a83904314aabe043ba5baff43d40192, type: 3}

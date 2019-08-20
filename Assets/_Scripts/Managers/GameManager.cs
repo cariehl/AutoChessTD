@@ -105,6 +105,7 @@ namespace AutoChessTD {
                     InitializeMainMenu();
                     return;
                 default:    // Scenario Game Scene
+                    InitializeGamePlayUI();
                     InitializeScenario();
                     return;
             }
@@ -113,6 +114,11 @@ namespace AutoChessTD {
         private void InitializeMainMenu() {
             MainMenuUI = Instantiate(mainMenuUIPrefab);
             MainMenuUI.GoToScreen();
+        }
+
+        private void InitializeGamePlayUI() {
+            GamePlayUI = Instantiate(gamePlayUIPrefab);
+            GamePlayUI.GoToScreen();
         }
 
         private void InitializeScenario() {

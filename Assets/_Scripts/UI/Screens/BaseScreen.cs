@@ -6,7 +6,7 @@ using UnityEngine.UI;
 namespace AutoChessTD.UI.Screens {
 
     public enum ScreenType {
-        ScenarioSelect, NONE
+        ScenarioSelect, EndScenario, NONE
     }
 
     [RequireComponent(typeof(CanvasScaler), typeof(GraphicRaycaster))]
