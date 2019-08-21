@@ -45,6 +45,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minionFactoryPrefab: {fileID: 3625297855228920375, guid: dc100ac642f8c5e4e983b68aeb0e7580,
     type: 3}
+  homeBaseFactoryPrefab: {fileID: 6532507149300963427, guid: ae629ef425282144592b81b15fa3d48f,
+    type: 3}
   mainMenuUIPrefab: {fileID: 8648033783725579699, guid: e6a270307c8d3dd44b1490685b6ef8be,
     type: 3}
   gamePlayUIPrefab: {fileID: 8993157482301949787, guid: caa9d876ede2e444689504e63d2c695a,
@@ -54,5 +56,6 @@ MonoBehaviour:
   eventSystemPrefab: {fileID: 865151087541279568, guid: c422f9fa3c145f24b8b162bfe4b4dee2,
     type: 3}
   MinionFactory: {fileID: 0}
+  HomeBaseFactory: {fileID: 0}
   MainMenuUI: {fileID: 0}
   GamePlayUI: {fileID: 0}

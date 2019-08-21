@@ -5,6 +5,7 @@ using AutoChessTD.Data;
 using AutoChessTD.Units;
 using AutoChessTD.Events;
 using AutoChessTD.Units.Minions;
+using AutoChessTD.Units.HomeBases;
 
 namespace AutoChessTD {
 
@@ -23,6 +24,7 @@ namespace AutoChessTD {
         }
 
         public List<MinionUnit> activeMinions = new List<MinionUnit>();
+        public HomeBaseUnit activeHomeBase;
 
         public bool isPlaying;
         public bool isScenarioActive;
@@ -40,6 +42,7 @@ namespace AutoChessTD {
         public void StartScenario() {
             Debug.Log("Scenario Started");
             isScenarioActive = true;
+
             StartNextRound();
         }
 
@@ -71,6 +74,9 @@ namespace AutoChessTD {
         }
 
         public void SpawnObjects() {
+            activeHomeBase = GameManager.Instance.HomeBaseFactory.SpawnHomeBase(new Vector3(5, 0, 5));
+            activeHomeBase.OnKilled += OnHomeBaseDestroyed;
+
             foreach (var minionSpawnConfig in CurrentRound.Minions) {
                 var minion = GameManager.Instance.MinionFactory.SpawnMinion(minionSpawnConfig.minionToSpawn);
                 activeMinions.Add(minion);
@@ -107,11 +113,21 @@ namespace AutoChessTD {
             EventManager.OnRoundEnded -= RoundEnded;
         }
 
+        private void OnHomeBaseDestroyed(Unit homeBase) {
+            EventManager.ScenarioEnded(false);
+        }
+
         public bool HasCompletedScenario() {
             return !isPlaying && CurrentRound == GetRound(currentScenario.Rounds.Length - 1);
         }
 
         public void CleanUp() {
+            if (activeHomeBase != null) {
+                activeHomeBase.OnKilled -= OnHomeBaseDestroyed;
+                GameObject.Destroy(activeHomeBase.gameObject);
+                activeHomeBase = null;
+            }
+
             foreach (var minion in activeMinions) {
                 GameObject.Destroy(minion.gameObject);
             }
@@ -126,6 +142,10 @@ namespace AutoChessTD {
 
             activeMinions.Clear();
             CheckRoundCompleted();
+        }
+
+        public void KillHomeBase() {
+            activeHomeBase.TakeDamage(activeHomeBase.Health);
         }
     }
 }

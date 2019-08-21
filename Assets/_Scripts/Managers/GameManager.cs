@@ -30,6 +30,7 @@ namespace AutoChessTD {
 
         [Header("Prefabs")]
         public MinionFactory minionFactoryPrefab;
+        public HomeBaseFactory homeBaseFactoryPrefab;
         public MainMenuUI mainMenuUIPrefab;
         public GamePlayUI gamePlayUIPrefab;
         public GameObject gridPrefab;
@@ -41,6 +42,7 @@ namespace AutoChessTD {
 
         // Factories
         [HideInInspector] public MinionFactory MinionFactory;
+        [HideInInspector] public HomeBaseFactory HomeBaseFactory;
 
         // UI Managers
         [HideInInspector] public MainMenuUI MainMenuUI;
@@ -124,6 +126,7 @@ namespace AutoChessTD {
         private void InitializeScenario() {
             Grid = Instantiate(gridPrefab);
             MinionFactory = Instantiate<MinionFactory>(minionFactoryPrefab);
+            HomeBaseFactory = Instantiate<HomeBaseFactory>(homeBaseFactoryPrefab);
 
             ScenarioManager.StartScenario();
         }
@@ -139,6 +142,10 @@ namespace AutoChessTD {
         // Called from UI (for testing)
         public void KillAll() {
             Instance.ScenarioManager?.roundRunner.KillAll();
+        }
+
+        public void KillHomeBase() {
+            Instance.ScenarioManager?.roundRunner.KillHomeBase();
         }
     }
 }
