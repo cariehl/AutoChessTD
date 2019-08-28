@@ -24,6 +24,13 @@ namespace AutoChessTD.Units.Minions {
 
         private void OnTriggerEnter(Collider other) {
             // triggered for any child gameObject triggers
+
+            ICanBeSuicided target = other.GetComponentInParent<ICanBeSuicided>();
+            if (target != null)
+            {
+                target.SuicideDamage(Damage);
+                Destroy(gameObject);
+            }
         }
     }
 }

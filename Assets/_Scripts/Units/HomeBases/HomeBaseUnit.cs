@@ -7,24 +7,14 @@ using AutoChessTD.Interfaces;
 
 namespace AutoChessTD.Units.HomeBases
 {
-    public class HomeBaseUnit : Unit
+    public class HomeBaseUnit : Unit, ICanBeSuicided
     {
         [Header("Stats")]
         [SerializeField] private float health = 10;
 
-        public override void Awake()
+        public void SuicideDamage(float damage)
         {
-            base.Awake();
-            base.OnUnitDetected += UnitDetected;
+            this.TakeDamage(damage);
         }
-
-
-        private void UnitDetected(Unit unit)
-        {
-            TakeDamage(unit.Damage);
-            Destroy(unit.gameObject);
-        }
-
-        
     }
 }
