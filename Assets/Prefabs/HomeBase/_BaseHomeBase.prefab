@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 612555890374208262}
   - component: {fileID: 6771019588948584993}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: RangeDetection
   m_TagString: RangeDetection
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 4087590621450711348}
   - component: {fileID: 4233398054110301415}
   - component: {fileID: 2346918515480373443}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 5872535972173455617}
   - component: {fileID: 3226785168116553849}
   - component: {fileID: 1093480821910137294}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: _BaseHomeBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}

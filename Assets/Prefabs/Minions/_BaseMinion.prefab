@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6215512149956232450}
   - component: {fileID: 7037900461474988904}
   - component: {fileID: 3721216228101657874}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ GameObject:
   m_Component:
   - component: {fileID: 99365187571053643}
   - component: {fileID: 3531754918573678323}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RangeDetection
   m_TagString: RangeDetection
   m_Icon: {fileID: 0}
@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 4589987810795149897}
   - component: {fileID: 2624540435392825398}
   - component: {fileID: -5794934299915318373}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: _BaseMinion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
