@@ -14,6 +14,9 @@ namespace AutoChessTD.Units.Minions {
     /// </summary>
     public class MinionUnit : Unit, ITowerInteractable {
 
+        private Vector3 Destination;
+        public PlayerController controller;
+
         public override void Awake() {
             base.Awake();
         }
@@ -31,6 +34,11 @@ namespace AutoChessTD.Units.Minions {
                 target.SuicideDamage(Damage);
                 Destroy(gameObject);
             }
+        }
+
+        public void SetDestination(Vector3 destination)
+        {
+            controller.SetDestination(destination);
         }
     }
 }

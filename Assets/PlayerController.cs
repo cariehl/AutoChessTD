@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using AutoChessTD.Units.Minions;
 
 public class PlayerController : MonoBehaviour
 {
@@ -11,12 +12,16 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        agent.SetDestination(new Vector3(12, 1, 2));
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void SetDestination(Vector3 destination)
+    {
+        agent.SetDestination(destination);
     }
 }
