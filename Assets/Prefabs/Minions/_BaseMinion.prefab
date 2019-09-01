@@ -100,7 +100,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 99365187571053643}
-  - component: {fileID: 3531754918573678323}
+  - component: {fileID: 8708288611444468790}
   m_Layer: 10
   m_Name: RangeDetection
   m_TagString: RangeDetection
@@ -122,7 +122,7 @@ Transform:
   m_Father: {fileID: 4589987810795149897}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &3531754918573678323
+--- !u!65 &8708288611444468790
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -203,7 +203,7 @@ MonoBehaviour:
   _damage: 5
   detectionRange: 0
   baseDetectionRangeModifier: 1
-  rangeDetectionCollider: {fileID: 3531754918573678323}
+  rangeDetectionCollider: {fileID: 0}
   controller: {fileID: 400409526}
 --- !u!114 &400409526
 MonoBehaviour:

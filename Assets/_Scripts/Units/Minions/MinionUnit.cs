@@ -29,8 +29,9 @@ namespace AutoChessTD.Units.Minions {
             // triggered for any child gameObject triggers
 
             ICanBeSuicided target = other.GetComponentInParent<ICanBeSuicided>();
-            if (target != null)
+            if (target != null && other.tag == "RangeDetection")
             {
+                Debug.Log(other.name);
                 target.SuicideDamage(Damage);
                 Destroy(gameObject);
             }
