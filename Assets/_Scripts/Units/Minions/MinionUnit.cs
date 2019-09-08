@@ -16,9 +16,12 @@ namespace AutoChessTD.Units.Minions {
 
         private Vector3 Destination;
         public PlayerController controller;
+        [SerializeField] private float suicideRange = 1f;
+        public BoxCollider suicideRangeCollider;
 
         public override void Awake() {
             base.Awake();
+
         }
 
         private void OnCollisionEnter(Collision collision) {
@@ -27,19 +30,17 @@ namespace AutoChessTD.Units.Minions {
 
         private void OnTriggerEnter(Collider other) {
             // triggered for any child gameObject triggers
-
-            ICanBeSuicided target = other.GetComponentInParent<ICanBeSuicided>();
-            if (target != null && other.tag == "RangeDetection")
-            {
-                Debug.Log(other.name);
-                target.SuicideDamage(Damage);
-                Destroy(gameObject);
-            }
+            
         }
 
         public void SetDestination(Vector3 destination)
         {
             controller.SetDestination(destination);
+        }
+
+        private void InitSuicideRange()
+        {
+            suicideRangeCollider.size = new Vector3(suicideRange, 1, suicideRange);
         }
     }
 }
