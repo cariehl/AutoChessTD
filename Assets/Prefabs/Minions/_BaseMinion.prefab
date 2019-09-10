@@ -202,3 +202,6 @@ MonoBehaviour:
   detectionRange: 0
   baseDetectionRangeModifier: 1
   rangeDetectionCollider: {fileID: 3531754918573678323}
+  _type: 0
+  _config:
+    Type: 0

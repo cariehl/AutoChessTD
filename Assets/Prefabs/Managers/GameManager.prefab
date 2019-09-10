@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1818640946110815342
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1818640946110815328}
+  - component: {fileID: 1818640946110815343}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1818640946110815328
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818640946110815342}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1818640946110815343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818640946110815342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b37adb458862a124c9f103aea17beb6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minionFactoryPrefab: {fileID: 3625297855228920375, guid: dc100ac642f8c5e4e983b68aeb0e7580,
+    type: 3}
+  homeBaseFactoryPrefab: {fileID: 6532507149300963427, guid: ae629ef425282144592b81b15fa3d48f,
+    type: 3}
+  mainMenuUIPrefab: {fileID: 8648033783725579699, guid: e6a270307c8d3dd44b1490685b6ef8be,
+    type: 3}
+  gamePlayUIPrefab: {fileID: 8993157482301949787, guid: caa9d876ede2e444689504e63d2c695a,
+    type: 3}
+  gridPrefab: {fileID: 8093196302183761698, guid: dfb15da2efa702e468d9120fae62e36e,
+    type: 3}
+  eventSystemPrefab: {fileID: 865151087541279568, guid: c422f9fa3c145f24b8b162bfe4b4dee2,
+    type: 3}
+  MinionFactory: {fileID: 0}
+  HomeBaseFactory: {fileID: 0}
+  MainMenuUI: {fileID: 0}
+  GamePlayUI: {fileID: 0}
