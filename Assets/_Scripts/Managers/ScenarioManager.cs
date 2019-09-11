@@ -25,7 +25,7 @@ namespace AutoChessTD {
                 return;
             }
 
-            GameManager.Instance.Grid.Initialize(CurrentScenario.GridSize);
+            GameManager.Instance.Grid.Initialize(CurrentScenario.GridSize, CurrentScenario.CellSize);
 
             roundRunner = new RoundRunner(CurrentScenario);
             roundRunner.OnRoundEnded += OnRoundEnded;

@@ -26,9 +26,14 @@ namespace AutoChessTD.Data {
         public string DisplayName;
 
         /// <summary>
-        /// World Space size of Platform Grid
+        /// Height and width of Grid corresponding to number of cells to spawn
         /// </summary>
-        public Vector2 GridSize = new Vector2(200, 200);
+        public Vector2 GridSize = new Vector2(20, 20);
+
+        /// <summary>
+        /// Size of a single grid cell
+        /// </summary>
+        public float CellSize = 10f;
 
         /// <summary>
         /// Array of Round info. in a game
