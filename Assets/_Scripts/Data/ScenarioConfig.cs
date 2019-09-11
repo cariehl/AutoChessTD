@@ -26,6 +26,11 @@ namespace AutoChessTD.Data {
         public string DisplayName;
 
         /// <summary>
+        /// World Space size of Platform Grid
+        /// </summary>
+        public Vector2 GridSize = new Vector2(200, 200);
+
+        /// <summary>
         /// Array of Round info. in a game
         /// </summary>
         public RoundConfig[] Rounds;

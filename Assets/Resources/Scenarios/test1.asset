@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f753da248c676ef4c8117f5ad994cfd1, type: 3}
   m_Name: test1
   m_EditorClassIdentifier: Assembly-CSharp:AutoChessTD.Data:ScenarioConfig
+  SceneName: 
   DisplayName: Test 1
+  GridSize: {x: 100, y: 100}
   Rounds:
   - Name: Round 1
     Minions:

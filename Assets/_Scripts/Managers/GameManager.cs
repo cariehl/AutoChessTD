@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using AutoChessTD.UI;
 using AutoChessTD.Data;
+using AutoChessTD.Grid;
 using AutoChessTD.Events;
 using AutoChessTD.Factories;
 
@@ -33,7 +34,7 @@ namespace AutoChessTD {
         public HomeBaseFactory homeBaseFactoryPrefab;
         public MainMenuUI mainMenuUIPrefab;
         public GamePlayUI gamePlayUIPrefab;
-        public GameObject gridPrefab;
+        public PlatformGrid gridPrefab;
         public GameObject eventSystemPrefab;
 
         // Managers
@@ -48,7 +49,7 @@ namespace AutoChessTD {
         [HideInInspector] public MainMenuUI MainMenuUI;
         [HideInInspector] public GamePlayUI GamePlayUI;
 
-        [HideInInspector] public GameObject Grid { get; set; }
+        [HideInInspector] public PlatformGrid Grid { get; set; }
 
         private void Awake() {
             if (_instance != null && _instance != this) {
