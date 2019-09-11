@@ -1,6 +1,6 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace AutoChessTD.Grid {
 
@@ -9,29 +9,29 @@ namespace AutoChessTD.Grid {
     /// </summary>
     public class GridLocation {
 
-        public int Row { get; private set; }
-        public char Column { get; private set; }
+        public char Row { get; private set; }    // A, B, C, D, etc.
+        public int Column { get; private set; }    // 1, 2, 3, 4, etc.
 
-        public GridLocation(int row, char column) {
-            Row = row;
+        public GridLocation(char row, int column) {
+            Row = char.ToUpper(row);
             Column = column;
         }
 
         public GridLocation(int row, int column) {
-            Row = row + 1;
-            Column = (char)((int)'A' + column);
+            Row = (char)('A' + row);
+            Column = column + 1;
         }
 
         public int GetRowValue() {
-            return Row - 1;
+            return Row - 'A';
         }
 
         public int GetColumnValue() {
-            return Column - 'A';
+            return Column - 1;
         }
 
         public override string ToString() {
-            return Column + Row.ToString();
+            return Row + Column.ToString();
         }
 
         public override int GetHashCode() {

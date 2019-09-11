@@ -51,7 +51,7 @@ MonoBehaviour:
     type: 3}
   gamePlayUIPrefab: {fileID: 8993157482301949787, guid: caa9d876ede2e444689504e63d2c695a,
     type: 3}
-  gridPrefab: {fileID: 8093196302183761705, guid: dfb15da2efa702e468d9120fae62e36e,
+  gridPrefab: {fileID: 2185705852198975419, guid: dfb15da2efa702e468d9120fae62e36e,
     type: 3}
   eventSystemPrefab: {fileID: 865151087541279568, guid: c422f9fa3c145f24b8b162bfe4b4dee2,
     type: 3}

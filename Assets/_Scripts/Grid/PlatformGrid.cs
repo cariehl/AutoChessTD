@@ -5,25 +5,29 @@ using UnityEngine;
 namespace AutoChessTD.Grid {
     public class PlatformGrid : MonoBehaviour {
 
-        public int Width { get; private set; }
-        public int Height { get; private set; }
-        public float CellSize { get; private set; }
+        [SerializeField] private GameObject platform;
 
-        private float localWidthIncrement;
-        private float localHeightIncrement;
+        public int Width { get; private set; }  // # of cells wide
+        public int Height { get; private set; } // # of cells tall
+        public float CellSize { get; private set; } // width/height of a cell
+
+        private float widthRadius;
+        private float heightRadius;
+        private float cellRadius;
 
         public void Initialize(Vector2 gridSize, float cellSize) {
             Width = (int)gridSize.x;
             Height = (int)gridSize.y;
             CellSize = cellSize;
 
-            localWidthIncrement = 1f / Width;
-            localHeightIncrement = 1f / Height;
+            widthRadius = (Width * cellSize) / 2f;
+            heightRadius = (Height * cellSize) / 2f;
+            cellRadius = CellSize / 2f;
 
             float widthScale = gridSize.x * cellSize;
             float heightScale = gridSize.y * cellSize;
 
-            transform.localScale = new Vector3(widthScale, 1, heightScale);
+            platform.transform.localScale = new Vector3(widthScale, 1, heightScale);
         }
 
         /// <summary>
@@ -41,9 +45,9 @@ namespace AutoChessTD.Grid {
         /// <param name="location"></param>
         /// <returns></returns>
         private Vector3 GridLocationToLocalSpace(GridLocation location) {
-            Vector3 point = new Vector3(-0.5f, 0, 0.5f);
-            point.x += localWidthIncrement * location.GetColumnValue();
-            point.y -= localHeightIncrement * location.GetRowValue();
+            Vector3 point = new Vector3(-widthRadius, 0, heightRadius);
+            point.x += (CellSize * location.GetColumnValue()) + cellRadius;
+            point.z -= (CellSize * location.GetRowValue()) + cellRadius;
 
             return point;
         }
