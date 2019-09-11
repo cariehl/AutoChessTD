@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using AutoChessTD.Units.HomeBases;
 
 namespace AutoChessTD.Grid {
     public class PlatformGrid : MonoBehaviour {
@@ -14,6 +15,8 @@ namespace AutoChessTD.Grid {
         private float widthRadius;
         private float heightRadius;
         private float cellRadius;
+
+        public HomeBaseUnit HomeBase { get; set; }
 
         public void Initialize(Vector2 gridSize, float cellSize) {
             Width = (int)gridSize.x;

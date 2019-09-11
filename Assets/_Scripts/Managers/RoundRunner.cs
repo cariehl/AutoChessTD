@@ -77,6 +77,8 @@ namespace AutoChessTD {
             activeHomeBase = GameManager.Instance.HomeBaseFactory.SpawnHomeBase(new Vector3(5, 0, 5));
             activeHomeBase.OnKilled += OnHomeBaseDestroyed;
 
+            GameManager.Instance.Grid.HomeBase = activeHomeBase;
+
             foreach (var minionSpawnConfig in CurrentRound.Minions) {
                 var minion = GameManager.Instance.MinionFactory.SpawnMinion(minionSpawnConfig.minionToSpawn);
                 activeMinions.Add(minion);
@@ -114,6 +116,7 @@ namespace AutoChessTD {
         }
 
         private void OnHomeBaseDestroyed(Unit homeBase) {
+            GameManager.Instance.Grid.HomeBase = null;
             EventManager.ScenarioEnded(false);
         }
 
